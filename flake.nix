@@ -40,6 +40,8 @@
           # entire tree with Alejandra. The wrapper script is necessary due to
           # changes to the behaviour of Nix, which now encourages wrappers for
           # tree-wide formatting.
+          vim-plugins = pkgs.vimPlugins;
+
           formatter = pkgs.writeShellApplication {
             name = "nix3-fmt-wrapper";
 

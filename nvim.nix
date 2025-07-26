@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{vim-plugins, ...}: {
   imports = [
     ./keymaps.nix
     ./options.nix
@@ -54,7 +54,7 @@
 
         telescope.enable = true;
 
-        extraPlugins = with pkgs.vimPlugins; {
+        extraPlugins = with vim-plugins; {
           aerial = {
             package = aerial-nvim;
             setup =
