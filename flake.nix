@@ -22,10 +22,8 @@
       ...
     }: {
       imports = [
-        ./nvim.nix
-      ];
-      modules = [
         nvf.homeManagerModules.default
+        ./nvim.nix
       ];
 
       flake = {
