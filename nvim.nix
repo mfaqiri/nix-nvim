@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-{vim-plugins, ...}: {
-=======
-{input, pkgs, ...}: {
->>>>>>> 478f7d0 (updated)
+{pkgs, ...}: {
   imports = [
     ./keymaps.nix
     ./options.nix
     ./languages.nix
-        input.nvf.homeManagerModules.default
   ];
-  programs.nvf = {
+  home.programs.nvf = {
     enable = true;
 
     settings = {
@@ -59,7 +54,7 @@
 
         telescope.enable = true;
 
-        extraPlugins = with vim-plugins; {
+        extraPlugins = with pkgs.vimPlugins; {
           aerial = {
             package = aerial-nvim;
             setup =

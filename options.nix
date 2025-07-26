@@ -1,5 +1,5 @@
 { ... }: {
-  programs.nvf.settings.vim = 
+  home.programs.nvf.settings.vim = 
     {
 
     tabline.nvimBufferline.setupOpts.options = {
