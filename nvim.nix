@@ -26,7 +26,6 @@
             enable = true;
             codeActions.enable = true;
           };
-
           vim-fugitive.enable = true;
         };
 

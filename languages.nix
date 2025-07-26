@@ -7,13 +7,13 @@
       */
       ''
 
-              local capabilities = vim.lsp.protocol.make_client_capabilities()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-              lspconfig = require('lspconfig')
+        lspconfig = require('lspconfig')
 
-              lspconfig.gdscript.setup(capabilities)
+        lspconfig.gdscript.setup(capabilities)
 
-              lspconfig.cmake.setup(capabilities)
+        lspconfig.cmake.setup(capabilities)
       '';
 
     languages = {
