@@ -22,25 +22,48 @@
       ...
     }: {
       imports = [
+        ./nvim.nix
       ];
 
       flake = {
-        nixosConfigurations = {
-          myNvim = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-            };
+        homeManagerModules = {
+          nvim-conf = import ./nvim.nix;
+          default = self.homeManagerModules.nvim-conf;
+        };
+        systems = [
+          "x86_64-linux"
+          "x86_64-darwin"
+        ];
+        perSystem = {pkgs, ...}: {
+          # Provides the default formatter for 'nix fmt', which will format the
+          # entire tree with Alejandra. The wrapper script is necessary due to
+          # changes to the behaviour of Nix, which now encourages wrappers for
+          # tree-wide formatting.
+          formatter = pkgs.writeShellApplication {
+            name = "nix3-fmt-wrapper";
 
-            modules = [
-              nvf.homeManagerModules.default
-              ./nvim.nix
+            runtimeInputs = [
+              pkgs.alejandra
+              pkgs.fd
             ];
+
+            text = ''
+              # Find Nix files in the tree and format them with Alejandra
+              fd "$@" -t f -e nix -x alejandra -q '{}'
+            '';
+          };
+
+          # Provides checks to be built an ran on 'nix flake check'. They can also
+          # be built individually with 'nix build' as described below.
+          checks = {
+            # Check if codebase is properly formatted.
+            # This can be initiated with `nix build .#checks.<system>.nix-fmt`
+            # or with `nix flake check`
+            nix-fmt = pkgs.runCommand "nix-fmt-check" {nativeBuildInputs = [pkgs.alejandra];} ''
+              alejandra --check ${self} < /dev/null | tee $out
+            '';
           };
         };
       };
-      systems = [
-        "x86_64-linux"
-        "x86_64-darwin"
-      ];
     });
 }
