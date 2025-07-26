@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 {vim-plugins, ...}: {
+=======
+{input, pkgs, ...}: {
+>>>>>>> 478f7d0 (updated)
   imports = [
     ./keymaps.nix
     ./options.nix
     ./languages.nix
+        input.nvf.homeManagerModules.default
   ];
   programs.nvf = {
     enable = true;
