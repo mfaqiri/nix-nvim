@@ -4,7 +4,7 @@
     ./options.nix
     ./languages.nix
   ];
-  nvf = {
+  programs.nvf = {
     enable = true;
 
     settings = {

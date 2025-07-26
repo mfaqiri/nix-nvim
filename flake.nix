@@ -24,6 +24,9 @@
       imports = [
         ./nvim.nix
       ];
+      modules = [
+        nvf.homeManagerModules.default
+      ];
 
       flake = {
         homeManagerModules = {

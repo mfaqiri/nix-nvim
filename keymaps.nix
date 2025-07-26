@@ -1,5 +1,5 @@
 {...}: {
-  nvf.settings.vim = {
+  programs.nvf.settings.vim = {
     autocomplete.nvim-cmp.mappings = {
       confirm = "<C-y>";
       next = "<C-j>";
