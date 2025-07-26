@@ -1,5 +1,5 @@
 {...}: {
-  programs.nvf.settings.vim = {
+  nvf.settings.vim = {
     lsp.enable = true;
     luaConfigRC.myconfig =
       /*
